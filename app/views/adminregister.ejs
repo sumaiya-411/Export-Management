@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin Registration</title>
+  
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="css/font-awesome.min.css">
+  
+  <!-- Custom Styles -->
+  <style>
+    body {
+      padding-top: 50px;
+      background-color: lavender;
+      background-image: url('https://img.freepik.com/free-photo/technological-futuristic-holograms-logistics-means-transport_23-2151663057.jpg?t=st=1723315840~exp=1723319440~hmac=b2f5b769c90c49b8ac1ebd90021ff6acc7a9f053c9697ea16d012d1c0a0fbdf1&w=740'); 
+      background-position : center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: relative;
+      min-height: 100vh;
+      color: white;
+    }
+
+  
+  .container {
+      margin-top: 20px;
+    }
+
+    .signup-form {
+      background-color: rgba(0,0,0,0.2);
+      padding: 30px;
+      color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      max-width: 500px;
+      margin: 0 auto;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .signup-form h1 {
+      font-size: 50px;
+      margin-bottom: 30px;
+      text-align: center;
+      color:rgb(50, 211, 211);
+      text-shadow: black;
+    }
+
+    .signup-form h3,
+    .signup-form p {
+      color: lightgrey;
+      text-align: center;
+      font-size: 20px;
+    }
+
+    .signup-form input[type="text"],
+    .signup-form input[type="email"],
+    .signup-form input[type="password"],
+    .signup-form input[type="date"],
+    .signup-form input[type="tel"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      transition: box-shadow 0.3s ease-in-out;
+    }
+
+    .signup-form input[type="text"]:focus,
+    .signup-form input[type="email"]:focus,
+    .signup-form input[type="password"]:focus,
+    .signup-form input[type="date"]:focus,
+    .signup-form input[type="tel"]:focus {
+      box-shadow: 0 0 8px rgba(25, 150, 189, 0.6);
+    }
+
+    .signup-form button {
+      width: 100%;
+      padding: 15px;
+      background-color: #1996bd;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
+
+    .signup-form button:hover {
+      background-color: #0d6b9c;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .radio label {
+      margin-right: 20px;
+      color: lightblue;
+    }
+
+    .error-message {
+      color: red;
+      margin-top: 5px;
+      display: block;
+    }
+    .footer {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 20px;
+            color: #fff; /* White color for the footer text */
+            text-align: center;
+            border-top: 3px solid #3498db;
+            margin-top: 50px;
+            animation: fadeIn 1.5s ease;
+        }
+
+        .footer p {
+            margin: 0;
+            font-size: 16px; /* Adjusted font size for better readability */
+        }
+
+        .footer a {
+            color: #00bfff;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .navbar h1, .footer p {
+            animation: fadeIn 1.5s ease; /* Smooth fade-in animation */
+        }
+
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+
+<body ng-app="myApp" ng-controller="MainCtrl">
+  
+ 
+  <main>
+    <div class="container">
+      <div class="signup-form">
+        <form method="post" action="/adminregistered" onsubmit="return confirm('You will be redirected to login to confirm registration')">
+          <h1>Admin Registration</h1>
+          <h3>Highlight</h3>
+          <p>Registration will help us to keep you updated for any latest offers...</p>
+          <input type="text" name="fname" id="fname" placeholder="First Name" required>
+          <input type="text" name="sname" id="sname" placeholder="Last Name" required>
+          <input type="email" name="email" placeholder="Email" required>
+          <input type="password" name="userPassword" placeholder="Enter Password" required>
+          <input type="password" name="confirmPassword" placeholder="Confirm Password" required>
+          <span class="error-message" ng-show="password != confirmPassword">Password mismatch</span>
+          <input type="date" name="dob" id="dob" required>
+          <div class="radio">
+            <label><input type="radio" ng-model="Gen" value="Male" checked> Male</label>
+            <label><input type="radio" ng-model="Gen" value="Female"> Female</label>
+            <label><input type="radio" ng-model="Gen" value="Others"> Others</label>
+          </div>
+          <input type="tel" name="phone" id="phone" placeholder="Phone" required>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+  </main>
+  <footer class="footer">
+    <p>&copy; 2024 Export Management. All rights reserved. | <a href="#">Privacy Policy</a></p>
+</footer>
+  <!-- Bootstrap JS and AngularJS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+  <script src="js/adminregister.js"></script>
+</body>
+</html>

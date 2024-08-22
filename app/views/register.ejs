@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            padding-top: 50px;
+            background-image: url('https://img.freepik.com/free-photo/logistics-means-transport-together-with-technological-futuristic-holograms_23-2151662925.jpg?t=st=1723319210~exp=1723322810~hmac=bd5187bd379d1f24dd4b44a0e2254fd81158a45daf7fd3fb81dc0cb204fe6d32&w=826');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            font-family: 'Roboto', sans-serif;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .container {
+            background: rgba(0, 0, 0, 0.85);
+            border-radius: 20px;
+            padding: 60px 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            max-width: 1200px;
+            margin: 0 auto;
+            animation: fadeIn 1.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-weight: 700;
+            font-size: 3em;
+            color: #f5a623;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 700;
+            font-size: 2em;
+            color: #ffffff;
+        }
+
+        .thumbnail {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .thumbnail img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .thumbnail:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .caption p {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 1.2em;
+            color: #f5a623;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            background-color: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 5px;
+            padding: 15px;
+            font-size: 16px;
+            color: #333;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+        }
+
+        .form-control:focus {
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .btn-custom {
+            background-color: #f5a623;
+            color: #fff;
+            border: none;
+            padding: 15px 20px;
+            font-weight: bold;
+            font-size: 18px;
+            text-transform: uppercase;
+            border-radius: 5px;
+            width: 100%;
+            transition: background-color 0.4s, box-shadow 0.4s, transform 0.4s;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-custom:hover {
+            background-color: #e09c13;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+
+<body ng-app="myApp" ng-controller="MainCtrl">
+
+<main>
+    <div class="container">
+        <h1>Welcome to Our Shipping Service</h1>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="thumbnail">
+                    <img src="images/products/harbor1.jpg" alt="Harbor Image 1">
+                    <div class="caption">
+                        <p>Import Export at its Best</p>
+                    </div>
+                </div>
+                <div class="thumbnail">
+                    <img src="images/products/harbor2.jpg" alt="Harbor Image 2">
+                    <div class="caption">
+                        <p>Import Export at Cheapest Rates</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <h2>Sign Up for an Account</h2>
+                <div class="signup-form">
+                    <form method="post" action="/registered" onsubmit="return alert('You will be redirected to login to confirm registration')">
+                        <input type="hidden" id="gender" name="gender" value="{{Gen}}">
+
+                        <div class="form-group">
+                            <input type="text" name="fname" id="fname" placeholder="First Name" required class="form-control" />
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" name="sname" id="sname" placeholder="Last Name" required class="form-control" />
+                        </div>
+
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Email" required class="form-control" />
+                        </div>
+
+                        <div class="form-group">
+                            <input ng-model="password" type="password" name="userPassword" placeholder="Enter Password" ng-required="true" class="form-control" />
+                        </div>
+
+                        <div class="form-group">
+                            <input ng-model="confirmPassword" type="password" name="confirmPassword" placeholder="Confirm Password" ng-required="true" class="form-control" />
+                            <span ng-show="password != confirmPassword" style="color: red;">Password mismatch</span>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="date" id="dob" name="dob" required class="form-control" />
+                        </div>
+
+                        <div class="form-group">
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" class="custom-control-input" ng-model="Gen" id="Male" value="Male" ng-checked="true"> Male
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" class="custom-control-input" ng-model="Gen" id="Female" value="Female"> Female
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" class="custom-control-input" ng-model="Gen" id="Others" value="Others"> Others
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" name="phone" id="phone" placeholder="Enter phone" class="form-control" maxlength="10" required />
+                        </div>
+
+                        <button type="submit" class="btn btn-custom">Submit</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="thumbnail">
+                    <img src="images/products/shipment1.jpg" alt="Shipment Image 1">
+                    <div class="caption">
+                        <p>Delivery Anywhere, Anytime</p>
+                    </div>
+                </div>
+                <div class="thumbnail">
+                    <img src="images/products/shipment2.jpg" alt="Shipment Image 2">
+                    <div class="caption">
+                        <p>Around the World in a Few Days</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+
+</html>
+

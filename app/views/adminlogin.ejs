@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image:url('https://img.freepik.com/free-photo/technological-futuristic-holograms-logistics-means-transport_23-2151663057.jpg?t=st=1723315840~exp=1723319440~hmac=b2f5b769c90c49b8ac1ebd90021ff6acc7a9f053c9697ea16d012d1c0a0fbdf1&w=740');
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            font-family: 'Poppins', sans-serif;
+            color: #ffffff;
+            overflow: hidden;
+        }
+
+        /* Fullscreen video background */
+        .background-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            filter: brightness(0.5);
+        }
+
+        /* Glassmorphism container */
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #ffffff;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            animation: glow 1.5s infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px #ffffff, 0 0 20px #ff7e5f, 0 0 30px #ff7e5f, 0 0 40px #ff7e5f, 0 0 50px #ff7e5f, 0 0 60px #ff7e5f, 0 0 70px #ff7e5f;
+            }
+            to {
+                text-shadow: 0 0 20px #ffffff, 0 0 30px #ff7e5f, 0 0 40px #ff7e5f, 0 0 50px #ff7e5f, 0 0 60px #ff7e5f, 0 0 70px #ff7e5f, 0 0 80px #ff7e5f;
+            }
+        }
+
+        .form-control {
+            background-color: rgba(255, 255, 255, 0.2);
+            border: none;
+            padding: 15px;
+            border-radius: 50px;
+            color: #ffffff;
+            margin-bottom: 20px;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-control:focus {
+            background-color: rgba(255, 255, 255, 0.3);
+            outline: none;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+        }
+
+        .btn-custom {
+            background: linear-gradient(45deg, #ff7e5f, #feb47b);
+            color: #ffffff;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            font-weight: bold;
+            border-radius: 50px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 100%;
+            text-transform: uppercase;
+        }
+
+        .btn-custom:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 126, 95, 0.6);
+        }
+
+        .or {
+            margin: 30px 0;
+            font-size: 1.2em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #ffffff;
+        }
+
+      
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5em;
+            }
+
+            .form-control {
+                font-size: 1em;
+            }
+
+            .btn-custom {
+                padding: 10px 20px;
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <video autoplay muted loop class="background-video">
+        <source src="https://storage.googleapis.com/coverr-main/mp4/Building-Complex.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <div class="container">
+        <h1>Admin Login</h1>
+        <form method="post" action="/admincargo">
+            <input type="email" class="form-control" name="email" placeholder="Enter email" required>
+            <input type="password" class="form-control" name="userPassword" placeholder="Enter Password" required>
+            <button type="submit" class="btn btn-custom">Login</button>
+        </form>
+        <div class="or">Or</div>
+        <form method="post" action="/adminregister">
+            <button type="submit" class="btn btn-custom">Signup</button>
+        </form>
+    </div>
+</body>
+
+</html>

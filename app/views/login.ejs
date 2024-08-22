@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>User Login</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-image: url('https://img.freepik.com/free-photo/logistics-means-transport-together-with-technological-futuristic-holograms_23-2151662925.jpg?t=st=1723321217~exp=1723324817~hmac=ad2f84a15ecb385203ff97b958c42ab8846a500e23d727b6d23e4c8a7732ec13&w=826');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            padding: 40px;
+            max-width: 450px;
+            width: 100%;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            animation: fadeInZoomIn 1s ease-in-out;
+        }
+
+        @keyframes fadeInZoomIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .header {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 30px;
+            color: #f0f0f0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            animation: glow 1.5s infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #f0f, 0 0 40px #f0f, 0 0 50px #f0f, 0 0 60px #f0f, 0 0 70px #f0f;
+            }
+            to {
+                text-shadow: 0 0 20px #fff, 0 0 30px #f0f, 0 0 40px #f0f, 0 0 50px #f0f, 0 0 60px #f0f, 0 0 70px #f0f, 0 0 80px #f0f;
+            }
+        }
+
+        .btn-custom {
+            background: linear-gradient(45deg, #ff6b6b, #f06595);
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 50px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        .btn-custom:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .form-section {
+            margin-bottom: 25px;
+        }
+
+        h2 {
+            font-weight: lighter;
+            color: #f0f0f0;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        input[type="email"],
+        input[type="password"] {
+            border: none;
+            border-radius: 25px;
+            padding: 15px;
+            margin-bottom: 15px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            color: #fff;
+            font-size: 1em;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            transition: background 0.3s, box-shadow 0.3s;
+        }
+
+        input[type="email"]:focus,
+        input[type="password"]:focus {
+            background: rgba(255, 255, 255, 0.3);
+            outline: none;
+            box-shadow: inset 0 5px 10px rgba(0, 0, 0, 0.6);
+        }
+
+        .or-divider {
+            font-size: 1.5em;
+            color: #f0f0f0;
+            margin: 30px 0;
+        }
+
+        .top-right-buttons {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .btn-small-custom {
+          background: linear-gradient(45deg, #ff6b6b, #f06595);
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 50px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            margin-top: 20px;
+            width: 100%;
+
+           
+        }
+
+        .btn-small-custom:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .social-icons {
+            margin-top: 20px;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .social-icons img {
+            width: 40px;
+            height: 40px;
+            transition: transform 0.3s;
+        }
+
+        .social-icons img:hover {
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+
+<body ng-app="myApp" ng-controller="MainCtrl">
+    <main>
+        <!-- Upper right buttons and social icons -->
+        <div class="top-right-buttons">
+            <form method="post" action="/aboutUs">
+                <button type="submit" class="btn-small-custom">About Us</button>
+            </form>
+            <form method="post" action="/ourServices">
+                <button type="submit" class="btn-small-custom">Our Services</button>
+            </form>
+        </div>
+
+        <div class="container">
+            <div class="header">WELCOME TO EXPORT MANAGEMENT</div>
+            <div class="form-section">
+                <h2>Login to your account</h2>
+                <form method="post" action="/userhome">
+                    <input type="email" name="email" placeholder="Enter email" required />
+                    <input type="password" name="userPassword" placeholder="Enter Password" required />
+                    <button type="submit" class="btn btn-custom">Login</button>
+                </form>
+            </div>
+            <div class="or-divider">OR</div>
+            <div class="form-section">
+                <h2>New User Signup!</h2>
+                <form method="post" action="/register">
+                    <button type="submit" class="btn btn-custom">Signup</button>
+                </form>
+            </div>
+            <div class="social-icons">
+                <a href="https://twitter.com/">
+                    <img src="https://imgs.search.brave.com/0FbzpOtihTJJWm06u2zRCwqZiH6PUejxpkyzVaHJ7w4/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/bW9zLmNtcy5mdXR1/cmVjZG4ubmV0L1VH/Z3B6dGtNMlhGTlVj/QkVjcWVHOW4tMzIw/LTgwLmpwZw" alt="Twitter">
+                </a>
+                <a href="https://facebook.com/">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook">
+                </a>
+                <a href="https://instagram.com/">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+                </a>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

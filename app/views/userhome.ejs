@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/prettyPhoto.css" rel="stylesheet">
+    <link href="css/price-range.css" rel="stylesheet">
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/responsive.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="js/userhome.js"></script>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-image: url('https://img.freepik.com/free-photo/logistics-means-transport-together-with-technological-futuristic-holograms_23-2151662925.jpg?t=st=1723321217~exp=1723324817~hmac=ad2f84a15ecb385203ff97b958c42ab8846a500e23d727b6d23e4c8a7732ec13&w=826');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            color: #fff;
+            margin: 0;
+            padding-top: 20px;
+            position: relative;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .section {
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            padding: 30px;
+            margin-bottom: 30px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+        }
+
+        h4 {
+            font-size: 2em;
+            font-weight: 700;
+            color:white; /* Changed to a bright color for contrast */
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        label {
+            font-weight: lighter;
+            font-size: 30px;
+            color: linear-gradient(45deg, #ff6b6b, #f06595);; /* Changed to match the heading */
+            text-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
+            margin-bottom: 15px;
+        }
+
+        .form-control {
+            background: white; /* Solid background color */
+            border: 1px solid black; /* Bright border for visibility */
+            border-radius: 5px;
+            padding: 25px;
+            margin-bottom: 20px;
+            color: black; /* White font color */
+            font-size: 1.2em;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .form-control:focus {
+            background: white;
+            color: black; /* Slightly different color on focus */
+            box-shadow: 0 0 10px #ffcc00; /* Bright focus shadow */
+            outline: none;
+        }
+
+        .btn-custom {
+            background: linear-gradient(45deg, #ff6b6b, #f06595);
+            border: none;
+            border-radius: 50px;
+            padding: 15px 25px;
+            font-size: 1.2em;
+            color: white;
+            font-weight: 700;
+            text-transform: uppercase;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-top: 20px;
+            width: 100%;
+            margin-bottom: 30px;
+        }
+
+        .btn-custom:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .table {
+            background: whitee; /* Solid background color */
+            color: #fff;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            overflow: hidden;
+            font-size: 1.2em;
+        }
+
+        .table th, .table td {
+            color: white; /* Changed to match other text */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+            padding: 15px;
+        }
+
+        .table thead {
+            background: #2c3e50; /* Solid background color */
+        }
+
+        .table tbody tr:hover {
+            background: #3b5998; /* Solid background on hover */
+        }
+    </style>
+</head>
+
+<body ng-app="myApp" ng-controller="MainCtrl">
+    <main>
+        <div class="container">
+            <!-- First Row -->
+            <div class="row">
+                <!-- Route Management Section -->
+                <div class="col-md-6 section">
+                    <h4>Route Management</h4>
+                    <button type="button" class="btn btn-custom btn-block" ng-click="getRouteCategory()">Get Route Category</button>
+                    <select class="form-control" id="rcode" ng-model="routecode" ng-change="addroute(routecode)">
+                        <option ng-repeat="r in route" value="{{$index+1}}">{{r.rcode}}</option>
+                    </select>
+                    <label>Source</label>
+                    <input type="text" name="source" id="source" placeholder="Source" required class="form-control" />
+                    <label>Destination</label>
+                    <input type="text" name="destination" id="destination" placeholder="Destination" required class="form-control" />
+                    <label>No. of Days (Shipment)</label>
+                    <input type="text" name="noofdays" id="noofdays" placeholder="No. of Days" required class="form-control" />
+                    <label>Shipment Charges</label>
+                    <input type="text" name="charges" id="charges" placeholder="Charges" required class="form-control" />
+                </div>
+
+                <!-- Cargo Management Section -->
+                <div class="col-md-6 section">
+                    <h4>Cargo Management</h4>
+                    <button type="button" class="btn btn-custom btn-block" ng-click="getCargoCategory()">Get Cargo Category</button>
+                    <select class="form-control" id="ccode" ng-model="categorycode" ng-change="add(categorycode)">
+                        <option ng-repeat="cat in category" value="{{$index+1}}">{{cat.ccode}}</option>
+                    </select>
+                    <label>Category</label>
+                    <input type="text" name="ccategory" id="ccategory" placeholder="Category" required class="form-control" />
+                    <label>Units</label>
+                    <input type="text" name="units" id="units" placeholder="Units" required class="form-control" />
+                    <label>Cost</label>
+                    <input type="text" name="cost" id="cost" placeholder="Cost" required class="form-control" />
+                    <hr>
+                    <label>Enter Quantity</label>
+                    <input type="text" name="quantity" id="quantity" placeholder="Enter Quantity" required class="form-control" />
+                    <label>Enter Bill No</label>
+                    <input type="text" name="billNo" id="billNo" placeholder="Enter Bill No" required class="form-control" />
+                    <button type="button" class="btn btn-custom btn-block" ng-click="addCargo()">Add to shipment</button>
+                    <label>Total Amount</label>
+                    <input type="text" name="total" id="total" placeholder="Total Amount" required class="form-control" />
+                    <form method="get" action="/admin">
+                        <button type="submit" class="btn btn-custom btn-block">Logout</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Second Row - Order Summary -->
+            <div class="row">
+                <div class="col-md-12 section">
+                    <h4>Order Summary</h4>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Code</th>
+                                <th>Category</th>
+                                <th>Units</th>
+                                <th>Cost</th>
+                                <th>Route Code</th>
+                                <th>Charges</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr mdbTableCol ng-repeat="car in cargo">
+                                <td>{{car.ccode}}</td>
+                                <td>{{car.ccategory}}</td>
+                                <td>{{car.units}}</td>
+                                <td>{{car.cost}}</td>
+                                <td>{{car.rcode}}</td>
+                                <td>{{car.charges}}</td>
+                                <td>{{car.quantity}}</td>
+                                <td>{{car.total}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <button type="button" class="btn btn-custom btn-block" ng-click="order()">Place Order</button>
+                    <form method="post" action="/payment">
+                        <button type="submit" class="btn btn-custom btn-block">Make Payment</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

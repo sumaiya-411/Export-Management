@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin - Manage Shipments</title>
+  
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="css/font-awesome.min.css">
+  
+  <!-- Custom Styles -->
+  <style>
+    body {
+      padding-top: 50px;
+      background-color: #f0f8ff;
+      font-family: 'Arial', sans-serif;
+      background-image: url('https://img.freepik.com/free-photo/technological-futuristic-holograms-logistics-means-transport_23-2151663057.jpg?t=st=1723315840~exp=1723319440~hmac=b2f5b769c90c49b8ac1ebd90021ff6acc7a9f053c9697ea16d012d1c0a0fbdf1&w=740');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+
+    }
+   .container {  
+   margin-top: 20px; 
+   
+   border-radius: 10px;
+   padding: 20px;  
+   display: flex;
+   align-items: center;
+   justify-content: center;
+ } 
+
+    
+    .signup-form {
+      background-color: rgba(0, 0, 0, 0.5);
+      margin-top: 30px;
+      margin-right: 10px;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      margin-bottom: 30px;
+      animation: fadeIn 1s ease-in-out;
+      justify-content: center;
+      width: 800px;
+    }
+    .signup-form h1 {
+      font-size:40px;
+      margin-bottom: 20px;
+      text-align: center;
+      color: #333;
+      animation: slideInDown 1s ease-in-out;
+    }
+    .signup-form input,
+    .signup-form select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    .signup-form button {
+      width: 100%;
+      padding: 10px;
+      background-color: #1996bd;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-bottom: 10px;
+      transition: all 0.3s ease-in-out;
+    }
+    .signup-form button:hover {
+      background-color: #0d6b9c;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      transform: translateY(-3px);
+    }
+    .navbar {
+      margin-bottom: 50px;
+      bottom:50px;
+      background-color: rgba(0, 0, 0, 0.8);
+      border: none;
+      border-radius: 0;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s ease-in-out;
+      font-size: 30px;
+    }
+    .navbar:hover {
+      background-color: #0d6b9c;
+    }
+    .navbar .navbar-header {
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+    }
+    .navbar .navbar-brand {
+      font-weight: bold;
+      font-size: 24px;
+      color: #fff !important;
+    }
+    .navbar-nav {
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      flex: 1;
+    }
+    .navbar-nav > li > a {
+      color: #fff !important;
+      padding: 15px 20px;
+      transition: background-color 0.3s ease-in-out;
+    }
+    .navbar-nav > li > a:hover {
+      background-color: #0d6b9c;
+    }
+    .navbar-text {
+      color: #fff !important;
+      padding: 15px 20px;
+      margin: 0;
+      white-space: nowrap;
+    }
+    .marquee {
+      overflow: hidden;
+      position: relative;
+      white-space: nowrap;
+    }
+    .marquee span {
+      display: inline-block;
+      padding-left: 100%;
+      animation: marquee 10s linear infinite;
+    }
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes slideInDown {
+      from { transform: translateY(-20px); }
+      to { transform: translateY(0); }
+    }
+  </style>
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+  <script src="js/routes.js"></script>
+</head>
+<body ng-app="myApp" ng-controller="MainCtrl">
+
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#" style="font-size: 50px;">Admin Panel</a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li class="navbar-text marquee"><span>Latest Export Updates: New shipment routes to Europe added! | New discounts on bulk shipments! | Updated schedules for Asia-Pacific routes!</span></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <div class="container">
+      <div class="signup-form">
+        <form method="post" action="/adminlogin">
+          <h1 style="color: #fff;"> Shipment Routes for Cargo</h1>
+          <input type="text" name="rcode" id="rcode" placeholder="Route Code" required>
+          <select id="source" name="source" class="browser-default custom-select">
+            
+            <option selected>Select Source</option>
+            <optgroup label="India"></optgroup>
+            <option value="Mumbai">Mumbai</option>
+            <option value="Goa">Goa</option>
+            <option value="Chennai">Chennai</option>
+            <option value="Surat">Surat</option>
+            </optgroup>
+            <optgroup label="USA"></optgroup>
+            <option value="New York, NY">New York, NY</option>
+            <option value="Los Angeles, CA">Los Angeles, CA</option>
+            <option value="Chicago, IL">Chicago, IL</option>
+            <option value=" Houston, TX">Houston, TX</option>
+            </optgroup>
+          </select>
+          <select id="destination" name="destination" class="browser-default custom-select">
+            <option selected>Select Destination</option>
+            <optgroup label="India"></optgroup>
+            <option value="Mumbai">Mumbai</option>
+            <option value="Goa">Goa</option>
+            <option value="Chennai">Chennai</option>
+            <option value="Surat">Surat</option>
+            <optgroup label="USA"></optgroup>
+            <option value="New York, NY">New York, NY</option>
+            <option value="Los Angeles, CA">Los Angeles, CA</option>
+            <option value="Chicago, IL">Chicago, IL</option>
+            <option value=" Houston, TX">Houston, TX</option>
+            </optgroup>
+          </select>
+          <input type="number" name="noofdays" id="noofdays" placeholder="No of days for shipment" required>
+          <input type="text" name="charges" id="charges" placeholder="Shipment Charges" required onkeydown="return (event.keyCode > 47 && event.keyCode < 58) || (event.keyCode == 8) || (event.keyCode == 9)">
+          <button type="button" class="btn btn-default" ng-click="submitData()"style="color: #000;background-color: white;border-radius: 20px;margin-bottom: 30px;margin-top: 30px;padding:10px">Submit Data</button>
+          <input type="text" name="getroute" id="getroute" placeholder="Enter Route Code" required>
+          <button type="button" class="btn btn-default" ng-click="getData()"style="color: #000;background-color: blue;border-radius: 20px;margin-bottom: 30px;margin-top: 10px;padding:10px">Get Route</button>
+          <button type="button" class="btn btn-default" ng-click="updateData()"style="color: #000;background-color:orange ;border-radius: 20px;margin-bottom: 30px;margin-top: 10px;padding:10px">Update Route</button>
+          <button type="button" class="btn btn-default" ng-click="deleteData()"style="color: black ;background-color:yellow;border-radius: 20px;margin-bottom: 30px;margin-top: 10px;padding:10px">Delete Route</button>
+        </form>
+        <form method="post" action="/vieworders">
+          <button type="submit" class="btn btn-default"style="color: #000;background-color: green ;border-radius: 20px;margin-bottom: 30px;margin-top: 10px;padding:10px">Orders</button>
+        </form>
+        <form method="get" action="/admin">
+          <button type="submit" class="btn btn-default"style="color: #000;background-color: red ;border-radius: 20px;margin-bottom: 30px;margin-top: 10px;padding:10px">Logout</button>
+        </form>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

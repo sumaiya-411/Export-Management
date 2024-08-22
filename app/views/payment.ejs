@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment Page</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="css/font-awesome.min.css" rel="stylesheet">
+  <link href="css/animate.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+  <script src="js/payment.js"></script>
+  <style>
+    body {
+      background-image: url('https://img.freepik.com/free-photo/logistics-means-transport-together-with-technological-futuristic-holograms_23-2151662925.jpg?t=st=1723321217~exp=1723324817~hmac=ad2f84a15ecb385203ff97b958c42ab8846a500e23d727b6d23e4c8a7732ec13&w=826');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      /* background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d); */
+      /* background-size: cover; */
+      /* background-attachment: fixed; */
+      /* background-position: center; */
+    }
+
+    .form-container {
+      background: rgba(0, 0, 0, 0.5);
+      color:white;
+      border-radius: 10px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+      padding: 20px;
+      max-width: 800px;
+      width: 100%;
+      text-align: center;
+  
+     animation: fadeInZoomIn 1.5s;
+      animation-fill-mode: both;
+  
+  }
+
+    .form-container h2 {
+      color: white;
+      margin-bottom: 30px;
+      font-weight: bold;
+    }
+
+    .form-container input,
+    .form-container select,
+    .form-container button {
+      margin-bottom: 20px;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+      color: #000;
+    }
+
+    .form-container input::placeholder {
+      color: #aaa;
+    }
+
+    .form-container select {
+      color: black;
+    }
+
+    .form-container button {
+      background-color: white;
+      color: black;
+      border: none;
+      padding: 12px;
+      font-size: 16px;
+      font-weight: bold;
+      text-transform: uppercase;
+      transition: background-color 0.3s, transform 0.3s;
+      width: 100%;
+      cursor: pointer;
+    }
+
+    .form-container button:hover {
+      background-color: black;
+      color:white;
+      transform: translateY(-3px);
+    }
+
+    label {
+      font-weight: bold;
+      margin-bottom: 5px;
+      display: block;
+      text-align: left;
+      color: white;
+    }
+
+    /* Animation Keyframes */
+    @keyframes fadeInZoomIn {
+      0% {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  </style>
+</head>
+
+<body ng-app="myApp" ng-controller="MainCtrl">
+
+  <main>
+    <div class="container" ng-init="getData()">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 form-container">
+          <form method="post" action="/makePayment">
+            <h2 class="text-center" style="color:aqua;">Payment Details</h2>
+            <div class="row">
+              <div class="col-lg-6">
+                <label for="fname">Card Holder's Name</label>
+                <input type="text" name="fname" id="fname" class="form-control" placeholder="John Doe" required
+                  onkeydown="return (event.keyCode > 64 && event.keyCode < 91) || (event.keyCode > 96 && event.keyCode < 123) || (event.keyCode == 8) || (event.keyCode == 9) || (event.keyCode == 32)">
+
+                <label for="cardno">Card Number</label>
+                <input type="text" name="cardno" id="cardno" class="form-control" placeholder="1234 5678 9012 3456" required maxlength="16"
+                  onkeydown="return (event.keyCode > 47 && event.keyCode < 58) || (event.keyCode == 8) || (event.keyCode == 9)">
+              </div>
+              <div class="col-lg-6">
+                <label for="month">Expiry Month</label>
+                <select ng-model="month" name="month" id="month" class="form-control">
+                  <option ng-repeat="m in months" value="{{m}}">{{m}}</option>
+                </select>
+
+                <label for="year">Expiry Year</label>
+                <select ng-model="year" name="year" id="year" class="form-control">
+                  <option ng-repeat="y in years" value="{{y}}">{{y}}</option>
+                </select>
+
+                <label for="cardcvc">CVC Code</label>
+                <input type="text" name="cardcvc" id="cardcvc" class="form-control" placeholder="123" required maxlength="3"
+                  onkeydown="return (event.keyCode > 47 && event.keyCode < 58) || (event.keyCode == 8) || (event.keyCode == 9)">
+              </div>
+            </div>
+            <button type="submit" class="btn">Make Payment</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+
+</html>

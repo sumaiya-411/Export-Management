@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="MobileOptimized" content="width" />
+    <meta name="HandheldFriendly" content="true" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/build/images/favicon/favicon.ico" />
+    <link rel="icon" sizes="16x16" href="/build/images/favicon/favicon-16x16.png">
+    <link rel="icon" sizes="32x32" href="/build/images/favicon/favicon-32x32.png">
+    <link rel="icon" sizes="192x192" href="/build/images/favicon/android-chrome-192x192.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/build/images/favicon/apple-touch-icon.png">
+    <meta name="msapplication-config" content="/build/images/favicon/browserconfig.xml">
+    <meta name="msapplication-tilecolor" content="#FFF23B">
+    <meta name="title" content="Make a payment for your Sandbox policy">
+    <meta name="description" content="Payment page">
+    <title>Make a payment for your Sandbox policy</title>
+    <link rel="preconnect" href="https://use.typekit.net" crossorigin />
+    <link rel="preload" as="style" href="https://use.typekit.net/zal7fqa.css" />
+    <link rel="stylesheet" href="https://use.typekit.net/zal7fqa.css" media="print" onload="this.media='all'" />
+    <script src="https://kit.fontawesome.com/9cc30965bb.js" crossorigin="anonymous" defer></script>
+    <link rel="stylesheet" href="/build/app.87723b41.css" data-turbo-track="reload">
+    <script src='https://libs.na.bambora.com/customcheckout/1/customcheckout.js'></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+
+    <style>
+        body {
+            background-image: url('https://img.freepik.com/free-photo/purple-bokeh-digital-business-background_53876-104055.jpg?t=st=1723242405~exp=1723246005~hmac=f79f5ba1f2aa3c24db2b36d272d5a344c86173b7e3d7d6a1ae353d8a3d6096da&w=740');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        h3, h4 {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            color: #007bff;
+            font-weight: 600;
+            text-align: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .p-4 {
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        [data-block="header_navigation"] {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        [data-block="header_navigation"] li {
+            margin-bottom: 10px;
+        }
+
+        [data-block="header_navigation"] a {
+            display: block;
+            text-decoration: none;
+            background-color: #1996bd;
+            color: black;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        [data-block="header_navigation"] a:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            transform: scale(1.05);
+            color: white;
+        }
+
+        .custom-label {
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        .custom-input {
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 10px;
+            font-size: 1rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            
+        }
+
+        .custom-input:focus {
+            border-color: #007bff;
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+         .custom-card-container { 
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+         }
+            
+
+        .c-button--action-small-alt {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+        }
+
+        .c-button--action-small-alt:hover {
+            background-color: #0056b3;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .policy-link {
+            color: #007bff;
+            text-decoration: underline;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .policy-link:hover {
+            color: #0056b3;
+        }
+
+        .tooltip__content {
+            display: none;
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            padding: 5px;
+            border-radius: 4px;
+            position: absolute;
+            z-index: 1;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+        }
+
+        .tooltip:hover .tooltip__content {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+        }
+        .form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color:rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.9);
+}
+
+.custom-input {
+    width: 90%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+
+.small-input {
+    max-width: 400px;
+}
+
+.label-wrapper {
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: white;
+}
+
+.prose {
+    margin-top: 20px;
+}
+.button-group {
+    gap: 100px; /* Adds space between the buttons */
+}
+
+.c-button--action-small-alt {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+    
+}
+
+.c-button--action-small-alt:hover {
+    background-color: #0056b3;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+}
+
+.no-underline {
+    text-decoration: none;
+}
+
+    </style>    
+</head>
+<body class="is-loading" data-turbo="false" data-controller="inactivity" data-inactivity-logout-required-value="true" data-inactivity-logout-url-value="/?timeout-payment=1" data-inactivity-interval-for-logout-value="600" data-inactivity-interval-for-warning-value="540">
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KZ4V7GM" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+
+<div class="container">
+    <header class="mb-6">
+        <nav>
+            <ul data-block="header_navigation">
+                <li><a href="/claims" class="p-4 block text-xl c-link--1 ">My Claims</a></li>
+                <li><a href="/policies" class="p-4 block text-xl c-link--1 ">My Policies</a></li>
+                <li><a href="/make-claim" class="p-4 block text-xl c-link--1 ">Make a Claim</a></li>
+                <li><a href="/make-payment" class="p-4 block text-xl c-link--1 active">Make a Payment</a></li>
+                <li><a class="underline p-4 block text-xl c-link--1" href="/login">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div id="payment-form" class="styled-payment-form">
+            <form name="payment_information" method="post" novalidate="novalidate">
+                <div data-js="error-container" data-id="summary-error"></div>
+
+                <fieldset data-js="step" data-step="1">
+                    <div class="prose max-w-none mb-8">
+                        <h3>Select your policy</h3>
+                        <div data-controller="modal">
+                            <div data-modal-target="toggle">
+                                <div class="c-link--2 policy-link">My policy isn't shown</div><br>
+                            </div>
+                            <div data-modal-target="content" hidden>
+                                <h4 class="mt-6 text-center">Not seeing your policy? We can help.</h4>
+                                <p class="text-center">
+                                    Send us an email at 
+                                    <a href="/cdn-cgi/l/email-protection#example" class="c-link--2 focus-visible:outline-none">
+                                        <span class="__cf_email__" data-cfemail="example">[email&#160;protected]</span>
+                                    </a> 
+                                    or give our team a call at 
+                                    <a href="tel:+18006673067" class="c-link--2 focus-visible:outline-none">800.667.3067</a> 
+                                    and we'll gladly make sure your missing policy is added to your account.
+                                </p>
+                                <p class="text-center">Once it's added it will be in your account going forward.</p>
+                                </div>
+
+                                <div class="flex justify-center button-group">
+                                    <a href="/cdn-cgi/l/email-protection#example" class="no-underline">
+                                        <button class="c-button--action-small-alt">Email Us</button>
+                                    </a>
+                                    <a href="tel:+18006673067" class="no-underline">
+                                        <button class="c-button--action-small-alt">Call Now</button>
+                                    </a>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                
+
+                    <!-- <div class="form-container"> -->
+                        <div class="prose max-w-none mb-8">
+                            <h4>Client Information</h4>
+                        </div>
+                    
+                        <div data-js="form-group" class="form-group mb-4">
+                            <div class="label-wrapper mb-2">
+                                <label for="payment_information_policyHolderName" class="custom-label required">Policyholder’s Name</label>
+                            </div>
+                            <input type="text" id="payment_information_policyHolderName" name="payment_information[policyHolderName]" required="required" placeholder="Name" aria-required="true" class="custom-input small-input" />
+                            <div data-js="error-container" data-id="payment_information_policyHolderName"></div>
+                        </div><br>
+                    
+                        <div data-js="form-group" class="form-group mb-4">
+                            <div class="label-wrapper mb-2">
+                                <label for="payment_information_policyNumber" class="custom-label required">Policy Number</label>
+                            </div>
+                            <input type="text" id="payment_information_policyNumber" name="payment_information[policyNumber]" required="required" placeholder="########Z##" aria-required="true" class="custom-input small-input" />
+                            <div data-js="error-container" data-id="payment_information_policyNumber"></div>
+                        </div><br>
+                    
+                        <div data-js="form-group" class="form-group mb-4">
+                            <div class="label-wrapper mb-2">
+                                <label for="payment_information_email" class="custom-label required">Policyholder’s Email</label>
+                            </div>
+                            <input type="email" id="payment_information_email" name="payment_information[email]" required="required" placeholder="user@email.com" aria-required="true" class="custom-input small-input" />
+                            <div data-js="error-container" data-id="payment_information_email"></div>
+                        </div><br>
+                    
+                        <div data-js="form-group" class="form-group mb-4">
+                            <div class="label-wrapper mb-2">
+                                <label for="payment_information_phoneNumber" class="custom-label required">Phone Number</label>
+                            </div>
+                            <input type="tel" id="payment_information_phoneNumber" name="payment_information[phoneNumber]" required="required" placeholder="(XXX) XXX-XXXX" aria-required="true" pattern="\(\d{3}\) \d{3}-\d{4}" class="custom-input small-input" />
+                            <div data-js="error-container" data-id="payment_information_phoneNumber"></div>
+                        </div><br>
+                    
+                        <div data-js="form-group" class="form-group mb-4">
+                            <div class="label-wrapper mb-2">
+                                <label class="custom-label required">Email a copy of your receipt to an additional email address</label>
+                            </div>
+                            <div id="payment_information_addCCEmail">
+                                <div class="inline-flex items-center mr-6">
+                                    <input type="radio" id="payment_information_addCCEmail_0" name="payment_information[addCCEmail]" value="1" required="required" />
+                                    <label for="payment_information_addCCEmail_0">Yes</label>
+                                </div>
+                                <div class="inline-flex items-center mr-6">
+                                    <input type="radio" id="payment_information_addCCEmail_1" name="payment_information[addCCEmail]" value="0" required="required" checked="checked" />
+                                    <label for="payment_information_addCCEmail_1">No</label>
+                                </div>
+                            </div><br>
+                            <div data-js="error-container" data-id="payment_information_addCCEmail"></div>
+                        </div>
+                    
+                        <div data-js="form-group" class="form-group mb-4 hidden" id="ccEmailContainer">
+                            <div class="label-wrapper mb-2">
+                                <label for="payment_information_ccEmail" class="custom-label required">Additional Email</label>
+                            </div>
+                            <input type="email" id="payment_information_ccEmail" name="payment_information[ccEmail]" placeholder="user@email.com" aria-required="true" class="custom-input small-input" />
+                            <div data-js="error-container" data-id="payment_information_ccEmail"></div>
+                        </div>
+                    
+                        <div class="prose" style="color:#007bff;">
+                            A copy of your receipt will be sent to the email addresses provided above.
+                        </div><br>
+                    <!-- </div> -->
+                    
+                <fieldset data-js="step" data-step="3" id="checkout-fieldset" class="hidden">
+                    <div class="prose max-w-none mb-8 text-center">
+                        <h4 class="custom-heading">Payment Details</h4>
+                    </div>
+
+                    <div class="checkout-container mx-auto mb-4 custom-card-container max-w-md">
+                        <div id="checkout-form">
+                            <div data-js="form-group" class="form-group mb-4">
+                                <div class="label-wrapper mb-2">
+                                    <label for="payment_information_paymentAmount" class="custom-label required">Payment Amount</label><br>
+                                </div>
+                                <input type="text" id="payment_information_paymentAmount" name="payment_information[paymentAmount]" required="required" placeholder="$ 50.00 CAD" aria-required="true" class="custom-input" />
+                                <div data-js="error-container" data-id="payment_information_paymentAmount"></div>
+                            </div>
+
+                            <div data-js="form-group" class="form-group mb-4">
+                                <div class="label-wrapper mb-2"> <br>
+                                    <label for="payment_information_cardHolderName" class="custom-label required">Cardholder Name</label>
+                                </div>
+                                <input type="text" id="payment_information_cardHolderName" name="payment_information[cardHolderName]" required="required" placeholder="Jordan Lee" aria-required="true" class="custom-input" />
+                                <div data-js="error-container" data-id="payment_information_cardHolderName"></div>
+                             </div>
+
+                            <div class="mb-6"><br>
+                                <label for="card-number" id="card-number-label" class="block mb-2 custom-label">Card Number</label>
+                                <div class="flex flex-col md:flex-row md:items-center"><br>
+                                    <input type="text" id="card-number" name="card_number" class="custom-input w-full" placeholder="1234 5678 9012 3456" /><br>
+                                    <div class="flex bg-duchess-grey-light w-[150px] md:w-[200px] justify-around mt-2 py-1 xs:ml-4 xs:self-end"><br>
+                                        <img id="visa-icon" width="60" height="20" src="https://imgs.search.brave.com/Ek8UUCi1C9-TjCw7ytVm9upjEoNgDT6eMJtM9WiQ9vQ/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zZWVr/bG9nby5jb20vaW1h/Z2VzL1YvdmlzYS1s/b2dvLTZGNDA1NzY2/M0Qtc2Vla2xvZ28u/Y29tLnBuZw" alt="Visa logo" />
+                                        <img id="mastercard-icon" width="60" height="20" src="https://imgs.search.brave.com/lvgL-_0fylLsCl99P95M27GiClPFzXutY9JzQWuvwHY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9sb2dv/d2lrLmNvbS9jb250/ZW50L3VwbG9hZHMv/aW1hZ2VzLzc4N19t/YXN0ZXJjYXJkLmpw/Zw" alt="Mastercard logo" />
+                                        <img id="amex-icon" width="60" height="20" src="https://imgs.search.brave.com/P7f_pxD9gFiiUzT_YMOD-5NblvgqegmL_VD_tcf3NyA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9sb2dv/ZGl4LmNvbS9sb2dv/Lzc5NzE2Ny5qcGc" alt="Amex logo" />
+                                    </div>
+                                </div>
+                                <label for="card-number" id="card-number-error" class="text-red-500 mt-2"></label>
+                            </div><br>
+
+                            <div class="flex flex-col xs:flex-row gap-y-3 mb-3">
+                                <div class="xs:w-full">
+                                    <label for="card-expiry" id="card-expiry-label" class="block mb-2 custom-label">Card Expiry</label><br>
+                                    <input type="text" id="card-expiry" name="card_expiry" class="custom-input w-full" placeholder="MM/YY" /><br>
+                                    <label for="card-expiry" id="card-expiry-error" class="text-red-500"></label>
+                                </div><br>
+                            </div>
+
+                            <div class="xs:w-full">
+                                
+                                <label for="card-cvv" id="card-cvv-label" class="block mb-2 custom-label">Security Code</label>
+                                
+                                <div class="flex mb-3">
+                                    <input type="text" id="card-cvv" name="card_cvv" class="custom-input w-full" placeholder="123" />
+                                </div><br>
+
+                                <div class="bg-duchess-grey-light flex ml-4 w-[100px] md:w-[200px] rounded-md">
+                                    <div class="md:ml-4 flex items-center">
+                                        <img width="70" height="40" src="https://imgs.search.brave.com/-LW4FYJoGpH6UyvZBFl1_EISV_rSI1SDkfIkN_yJdjM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy82/LzZmL0NWQzJTYW1w/bGVWaXNhTmV3LnBu/Zw" alt="Credit card security code location" />
+                                        <span class="md:hidden tooltip">
+                                            <i class="fa-sharp fa-solid fa-circle-question text-[#F92868]"></i>
+                                            <span class="tooltip__content">Three digit number on the back of your card.</span>
+                                        </span>
+                                        <p class="hidden md:block px-4 text-sm" style="color: #007bff;">Three digit number on the back of your card.</p>
+                                    </div>
+                                </div>
+                                <label for="card-cvv" id="card-cvv-error" class="text-red-500"></label>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset data-test="payment-summary" data-js="step" data-step="4">
+                    <div class="prose max-w-none mb-8">
+                        <h3 data-test="payment-summary-header">Payment summary</h3>
+                    </div>
+                    <div id="app-summary"></div>
+                    <p class="mt-12" style="color: #007bff;">A receipt will be emailed to the email address indicated above upon payment submission. </style></p>
+                    <div class="mt-5 g-recaptcha" data-sitekey="6LejUMAiAAAAAJ85uA4VKVnaSa2GmEVGW8fvvfL0"></div><br>
+                    <div class="mt-12">
+                        <div data-js="form-group" class="form-group">
+                            <div class="inline-flex items-center mr-6">
+                                <input type="checkbox" id="payment_information_termsAccepted" name="payment_information[termsAccepted]" required="required" value="1" />
+                                <label for="payment_information_termsAccepted" class="custom-label required">Terms accepted</label>
+                            </div>
+                            <div data-js="error-container" data-id="payment_information_termsAccepted"></div>
+                        </div>
+                    </div>
+                    <div><br>
+                        <button type="submit" id="payment_information_submit" name="payment_information[submit]" class="c-button--action-small-alt" style="width: 470px;">Submit</button>
+                    </div>
+                </fieldset>
+                <input type="hidden" id="payment_information__token" name="payment_information[_token]" value="80590a8.Rk3OI5ryYhbCyk6I_ymrFdWGA5nLWM49ek9Loikx7lU.M3ueRvfGGlXymSfOr1CZd-HIct6sPIN1AwcE-GJlmSAjK7hN7Yo0d_K8dg" />
+            </form>
+        </div>
+    </main>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+</body>
+</html>

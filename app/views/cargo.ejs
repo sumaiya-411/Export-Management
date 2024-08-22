@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Cargo Management</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/prettyPhoto.css" rel="stylesheet">
+    <link href="css/price-range.css" rel="stylesheet">
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/responsive.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="js/cargo.js"></script>
+    <style>
+        body {
+            padding-top: 50px;
+            background-color: #f8f9fa;
+            background-image: url('https://img.freepik.com/free-photo/technological-futuristic-holograms-logistics-means-transport_23-2151663057.jpg?t=st=1723315840~exp=1723319440~hmac=b2f5b769c90c49b8ac1ebd90021ff6acc7a9f053c9697ea16d012d1c0a0fbdf1&w=740');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .container {
+            margin-top: 20px;
+            width: 100%;
+            animation: fadeIn 1.5s ease-in-out; /* Fade in effect for the container */
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .image-wrapper {
+            margin-bottom: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+            animation: zoomIn 0.8s ease-in-out; /* Zoom in effect for images */
+        }
+
+        @keyframes zoomIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .image-wrapper:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            transform: translateY(-3px) scale(1.05); /* Enhance hover effect with slight scale */
+        }
+
+        .image-wrapper img {
+            width: 70%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: transform 0.3s ease; /* Smooth image zoom on hover */
+        }
+
+        .signup-form {
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+            color: white;
+            animation: fadeInUp 1s ease-out; /* Slide up and fade in effect for form */
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .signup-form h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            text-transform: uppercase;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .form-control {
+            border-radius: 5px;
+            margin-bottom: 15px;
+            padding: 10px;
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+            
+        }
+
+        .form-control:focus {
+            box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .btn-3d {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-bottom: 10px;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .btn-3d:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            transform: translateY(-2px) scale(1.05);
+            background-color: #0056b3;
+        }
+
+        .navbar {
+            margin-bottom: 0;
+            border-radius: 0;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .navbar-default {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .navbar-default .navbar-brand, .navbar-default .navbar-nav > li > a {
+            color: #fff;
+        }
+
+        .navbar-default .navbar-nav > li > a:hover {
+            color: #e6e6e6;
+        }
+
+        .or {
+            background-color: #007bff;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 0;
+            animation: fadeIn 1s ease-out;
+        }
+    </style>
+</head>
+<body class="container" ng-app="myApp" ng-controller="MainCtrl">
+    <main>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="image-wrapper">
+                        <img src="https://img.freepik.com/free-vector/modern-construction-machinery-abstract-concept_335657-3177.jpg?t=st=1723314234~exp=1723317834~hmac=983bb89734178487c249b3de7c6c7373b0641223316c270409e407dfdbcb2215&w=740" alt="Cargo Image 1">
+                    </div>
+                    <div class="image-wrapper">
+                        <img src="https://img.freepik.com/free-vector/hand-drawn-import-export-graphics_23-2149164081.jpg?t=st=1723313947~exp=1723317547~hmac=5b1dd0998a6b9a6de5776206924ba3e02ac3f9a193b138c5cf0dac63655c8417&w=740" alt="Cargo Image 2">
+                    </div>
+                    <div class="image-wrapper">
+                        <img src="https://img.freepik.com/free-vector/hand-drawn-flat-design-international-trade_23-2149154534.jpg?t=st=1723313760~exp=1723317360~hmac=c9e937adc3e4f2164303c8d9bfb777047e616c64bff1648316bb5fb3c5cc6d50&w=740" alt="Cargo Image 3">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="signup-form">
+                        <form method="post" action="/adminlogin">
+                            <h1>Add Cargo Categories for Shipment</h1>
+                            <input type="text" class="form-control" name="ccode" id="ccode" placeholder="Category Code" required>
+                            <select class="form-control" id="ccategory" name="ccategory">
+                                <option selected>Select Category</option>
+                                <option value="Furniture">Furniture</option>
+                                <option value="Electronics">Electronics</option>
+                                <option value="Oil">Oil</option>
+                                <option value="Electrical">Electrical</option>
+                                <option value="Automobiles">Automobiles</option>
+                                <option value="Medical">Medical</option>
+                                <option value="Others">Others...</option>
+                            </select>
+                            <select class="form-control" id="units" name="units">
+                                <option selected>Select Units</option>
+                                <option value="Dozens">Dozens</option>
+                                <option value="Cartons">Cartons</option>
+                                <option value="Kgs">KGs</option>
+                                <option value="Gallons">Gallons</option>
+                                <option value="Boxes">Boxes</option>
+                                <option value="Numbers">Numbers</option>
+                                <option value="Others">Others</option>
+                            </select>
+                            <input type="text" class="form-control" name="cost" id="cost" placeholder="Cost per unit" required>
+                            <button type="button" class="btn btn-3d" ng-click="submitData()" style="color:black;background-color: aqua;border-radius: 20px;margin-bottom: 30px;margin-top: 30px;padding: 10px;">Submit Data</button>
+                            <input type="text" class="form-control" name="getcat" id="getcat" placeholder="Enter Category Code" required>
+                            <button type="button" class="btn btn-3d" ng-click="getData()"style="color: #fff;background-color: #000;border-radius: 20px;margin-bottom: 30px;margin-top: 30px;padding:10px">Get Category</button>
+                            <button type="button" class="btn btn-3d" ng-click="updateData()"style="color: #000;background-color: #fff;border-radius: 20px;margin-bottom: 30px;margin-top: 30px;padding:10x">Update Product</button>
+                            <button type="button" class="btn btn-3d" ng-click="deleteData()"style="color: #000;background-color: #fff;border-radius: 20px;margin-bottom: 30px;margin-top: 30px;padding:10px">Delete Product</button>
+                        </form>
+                        <form method="post" action="/adminroutes">
+                            <button type="submit" class="btn btn-3d"style="color: #000;background-color: green;border-radius: 20px;margin-bottom: 30px;margin-top: 30px;padding: 10px;">Routes</button>
+                        </form>
+                        <form method="get" action="/admin">
+                            <button type="submit" class="btn btn-3d"style="color: #000;background-color: red ;border-radius: 20px;margin-bottom: 30px;margin-top: 30px;padding:10px">Logout</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="image-wrapper">
+                        <img src="images/products/export3.jpg" alt="Cargo Image 4">
+                    </div>
+                    <div class="image-wrapper">
+                        <img src="images/products/shipment2.jpg" alt="Cargo Image 5">
+                    </div>
+                    <div class="image-wrapper">
+                        <img src="images/products/shipment1.jpg" alt="Cargo Image 6">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

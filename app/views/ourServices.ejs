@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="/css/main.css" rel="stylesheet">
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background-image: url('https://img.freepik.com/free-photo/logistics-means-transport-together-with-technological-futuristic-holograms_23-2151662925.jpg?t=st=1723321217~exp=1723324817~hmac=ad2f84a15ecb385203ff97b958c42ab8846a500e23d727b6d23e4c8a7732ec13&w=826');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      color: beige;
+    }
+
+    .wrapper {
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+    }
+
+    .content {
+      flex: 1;
+      padding: 20px;
+    }
+
+    .content-section {
+      background-color: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      margin-top: 20px;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .content-section:hover {
+      transform: translateY(-10px);
+    }
+
+    h1, h2 {
+      color: white;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    p, .alumni-info {
+      color: #fff;
+      text-align: justify;
+      font-size: large;
+    }
+
+    h5 {
+      color: #fff;
+      text-align: center;
+      font-size: 1.5em;
+      margin-bottom: 20px;
+    }
+
+    .service {
+      margin-bottom: 30px;
+    }
+
+    .service img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
+
+    .service img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    }
+
+    .service-description {
+      text-align: justify;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    footer {
+      padding: 15px;
+      text-align: center;
+      background-color: #007bff;
+      color: #fff;
+      box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    footer p {
+      margin: 0;
+      font-size: larger;
+      line-height: 1.5;
+      justify-content: center;
+      display: flex;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .service {
+        text-align: center;
+      }
+
+      .service img {
+        margin-bottom: 20px;
+      }
+
+      footer {
+        padding: 10px;
+      }
+
+      footer p {
+        font-size: 0.9em;
+      }
+    }
+
+    @media (max-width: 480px) {
+      footer {
+        padding: 8px;
+      }
+      
+      footer p {
+        font-size: 0.8em;
+      }
+    }
+  </style>
+  <title>Our Services - Export Management</title>
+</head>
+<body>
+<div class="wrapper">
+  <main class="content">
+    <h1>Our Services</h1>
+    <div class="content-section col-md-10 col-md-offset-1">
+      
+      <!-- Service 1 -->
+      <div class="row service">
+        <div class="col-md-6">
+          <img src="https://img.freepik.com/free-photo/medium-shot-woman-reading-document_23-2148902534.jpg?t=st=1723233165~exp=1723236765~hmac=4fabae0b2be6bd4d02b0e6da168a848b7f3788c9892470038b1fd16e2996f0bb&w=826" alt="Service 1">
+        </div>
+        <div class="col-md-6 service-description">
+          <h5>Export Documentation</h5>
+          <p>
+            We handle all necessary documentation for your exports, ensuring compliance with international regulations. From invoices to certificates of origin, we manage the paperwork so you can focus on growing your business.
+          </p>
+        </div>
+      </div>
+
+      <!-- Service 2 -->
+      <div class="row service">
+        <div class="col-md-6">
+          <img src="https://img.freepik.com/premium-photo/warehouse-manager-worker-discussing-with-laptop_107420-56603.jpg?w=740" alt="Service 2">
+        </div>
+        <div class="col-md-6 service-description">
+          <h5>Customs Clearance</h5>
+          <p>
+            Our experts assist with customs clearance, making sure your goods pass through borders smoothly. We manage the complexities of customs regulations, tariffs, and duties to minimize delays and reduce costs.
+          </p>
+        </div>
+      </div>
+
+      <!-- Service 3 -->
+      <div class="row service">
+        <div class="col-md-6">
+          <img src="https://img.freepik.com/premium-photo/cargo-servicer-container-ship-docked-port-cargo-servicer_773230-36376.jpg?w=826" alt="Service 3">
+        </div>
+        <div class="col-md-6 service-description">
+          <h5>Freight Forwarding</h5>
+          <p>
+            We offer comprehensive freight forwarding services, coordinating the transportation of your goods by land, sea, or air. With our extensive global network, we ensure your products are delivered safely and on time.
+          </p>
+        </div>
+      </div>
+
+      <!-- Service 4 -->
+      <div class="row service">
+        <div class="col-md-6">
+          <img src="https://img.freepik.com/premium-photo/risk-assessment-charts-blackboard-business-analysis-conceptual-photo-realistic-black_980716-365462.jpg?w=826" alt="Service 4">
+        </div>
+        <div class="col-md-6 service-description">
+          <h5>Risk Management</h5>
+          <p>
+            Protect your business from potential risks associated with international trade. Our risk management services include insurance, compliance monitoring, and contingency planning to safeguard your investments.
+          </p>
+        </div>
+      </div>
+
+      <!-- Service 5 -->
+      <div class="row service">
+        <div class="col-md-6">
+          <img src="https://img.freepik.com/free-photo/business-person-futuristic-business-environment_23-2150970201.jpg?t=st=1723234726~exp=1723238326~hmac=b7c3a694d3beefc45ceb19c8eca5a0a367b0db549de96644782b3ad97bfa036d&w=826" alt="Service 5">
+        </div>
+        <div class="col-md-6 service-description">
+          <h5>Trade Finance</h5>
+          <p>
+            Secure the necessary funding to support your export activities. We assist with trade finance solutions, including letters of credit, export financing, and payment risk mitigation.
+          </p>
+        </div>
+      </div>
+
+      <!-- Service 6 -->
+      <div class="row service">
+        <div class="col-md-6">
+          <img src="https://img.freepik.com/premium-photo/asian-female-customer-support-operator-wearing-headset-is-guided-by-her-supportive-manager-experienced-colleague-help-operator-handle-call-with-client-providing-advice-guidance-enthusiastic_31965-201096.jpg?w=740" alt="Service 6">
+        </div>
+        <div class="col-md-6 service-description">
+          <h5>Consulting Services</h5>
+          <p>
+            Leverage our expertise in export management with tailored consulting services. We provide strategic advice on market entry, regulatory compliance, and supply chain optimization to help you succeed in the global market.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </main>
+  <footer>
+    <p>&copy; 2023 Export Management Services. All Rights Reserved.</p>
+  </footer>
+</div>
+</body>
+</html>

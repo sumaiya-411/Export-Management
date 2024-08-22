@@ -1,0 +1,198 @@
+<html>
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/font-awesome.min.css" rel="stylesheet">
+  <link href="css/prettyPhoto.css" rel="stylesheet">
+  <link href="css/price-range.css" rel="stylesheet">
+  <link href="css/animate.css" rel="stylesheet">
+  <link href="css/main.css" rel="stylesheet">
+  <link href="css/responsive.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+  <script src="js/order.js"></script>
+
+</head>
+<style>
+  body {
+            padding-top: 50px;
+            background-color: #1e1e2f;
+            background-image: url('https://img.freepik.com/free-photo/technological-futuristic-holograms-logistics-means-transport_23-2151663057.jpg?t=st=1723315840~exp=1723319440~hmac=b2f5b769c90c49b8ac1ebd90021ff6acc7a9f053c9697ea16d012d1c0a0fbdf1&w=740');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            font-family: 'Roboto', sans-serif;
+            color: #ffffff;
+        }
+
+        h1.ser {
+            color:black;
+           
+            font-size: 50px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+            width:100%;
+        }
+
+        .images-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+
+        .images-container img {
+            width: 100%;
+            max-width: 450px;
+            height: auto;
+            margin: 0 15px;
+            border-radius: 12px;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .images-container img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+        }
+
+        .features_items {
+            font-size: 24px;
+            margin-bottom: 30px;
+            font-weight: bold;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #00bcd4;
+        }
+
+        .form-control {
+            border-radius: 5px;
+            padding: 12px;
+            font-size: 18px;
+            border: 1px solid #00bcd4;
+            margin-bottom: 20px;
+            background-color: #2c2c3e;
+            color: #ffffff;
+            transition: box-shadow 0.4s ease;
+        }
+
+        .form-control:focus {
+            box-shadow: 0 0 15px rgba(0, 188, 212, 0.6);
+            border-color: #00bcd4;
+            outline: none;
+        }
+
+        .btn-default {
+            font-size: 18px;
+            border-radius: 25px;
+            color: #ffffff;
+            background-color: #00bcd4;
+            padding: 12px 30px;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: background-color 0.4s ease, transform 0.4s ease;
+            width: 100%;
+        }
+
+        .btn-default:hover {
+            background-color: #008c9e;
+            transform: translateY(-3px);
+        }
+
+        .table-striped {
+            color: #ffffff;
+            background-color: #2c2c3e;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .table-striped th,
+        .table-striped td {
+            padding: 15px;
+            text-align: center;
+            border-top: none;
+        }
+
+        .table-striped th {
+            background-color: #00bcd4;
+            color: black;
+            text-transform: uppercase;
+            font-weight: bold;
+            border-right: 1px solid #1e1e2f;
+        }
+
+        .table-striped td {
+            border-right: 1px solid #1e1e2f;
+            color: #1e1e2f;
+            background-color: #ffffff;
+        }
+
+        .table-striped th:last-child,
+        .table-striped td:last-child {
+            border-right: none;
+            color: black;
+        }
+    </style>
+</head>
+
+<body class="container" ng-app="myApp" ng-controller="MainCtrl">
+    <h1 class="ser">View Orders</h1>
+
+    <div class="images-container">
+        <img src="https://img.freepik.com/premium-photo/delivery-service-worker-stays-near-workplace-with-boxes-writes-tablet_159341-1866.jpg?w=826" alt="Image 1">
+        <img src="https://img.freepik.com/free-photo/logistics-freight-management-storage-supply-concept_53876-123932.jpg?t=st=1723271009~exp=1723274609~hmac=20c320d053287bf580cdff7323ae483a89ed71e6aec4f663ed96440b8856f71c&w=740" alt="Image 2">
+    </div>
+
+    <main>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <form method="post" action="">
+                        <div class="features_items" style="color: #ffffff;">Order Details</div>
+                        <input type="text" name="billNum" id="billNum" class="form-control" placeholder="Enter Bill Number" required value="" />
+                        <button type="button" class="btn btn-default" ng-click="getData()" style="margin-bottom: 30px;">Get Order Details</button>
+                        <table class="table table-striped">
+                            <thead>
+                              <tr>
+                                <th>Code</th>
+                                <th>Category</th>
+                                <th>Units</th>
+                                <th>Cost</th>
+                                <th>Route Code</th>
+                                <th>Charges</th>
+                                <th>Quantity</th>
+                                <th>Total</th>
+                            </tr>
+    </tr>
+  </thead>
+  <tbody>
+    <tr mdbTableCol ng-repeat="car in cargo"> 
+     
+      <th scope="row">{{car.ccode}}</td>
+<td>{{car.ccategory}}</td>
+<td>{{car.units}}</td>
+<td>{{car.cost}}</td>
+<td>{{car.rcode}}</td>
+<td>{{car.charges}}</td>
+<td>{{car.quantity}}</td>
+<td>{{car.total}}</td>
+
+    </tr>
+  </tbody>
+</table>
+</div>
+
+ </form>
+</div>
+</div>
+</div>
+
+</main>
+</body>
+</html>

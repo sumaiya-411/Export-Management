@@ -1,0 +1,170 @@
+<html>
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/font-awesome.min.css" rel="stylesheet">
+  <link href="css/prettyPhoto.css" rel="stylesheet">
+  <link href="css/price-range.css" rel="stylesheet">
+  <link href="css/animate.css" rel="stylesheet">
+  <link href="css/main.css" rel="stylesheet">
+  <link href="css/responsive.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+  <script src="js/prodCat.js"></script>
+</head>
+<style>
+  body    { padding-top:50px; }
+</style>
+
+<body class="container" ng-app="myApp" ng-controller="MainCtrl">
+
+<header>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid" style="background-color:green;">
+      <div class="navbar-header" >
+		<ul class="nav navbar-nav">
+        <li><img src="images/products/aPos.jpg" alt="Logo"  width="50%" height="25%"></li>
+        <li><img src="images/products/bPos.jpg" alt="Apparels"  width="200%" height="25%"></li>
+	  </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section id="slider"><!--slider-->
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div id="slider-carousel" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+              <li data-target="#slider-carousel" data-slide-to="0" class="active"></li>
+              <li data-target="#slider-carousel" data-slide-to="1"></li>
+              <li data-target="#slider-carousel" data-slide-to="2"></li>
+            </ol>
+
+            <div class="carousel-inner">
+              <div class="item active">
+                <div class="col-sm-12">
+                  <img src="images/gallery/bloodbank1.jpg" class="girl img-responsive" alt="" />
+                </div>
+              </div>
+              <div class="item">
+                <div class="col-sm-6">
+                  <img src="images/gallery/bloodbank2.jpg" class="girl img-responsive" alt=""/>
+                </div>
+              </div>
+
+              <div class="item">
+                <div class="col-sm-6">
+                  <img src="images/gallery/bloodbank3.jpg" class="girl img-responsive" alt=""/>
+                </div>
+              </div>
+
+            </div>
+
+            <a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
+              <i class="fa fa-angle-left"></i>
+            </a>
+            <a href="#slider-carousel" class="right control-carousel hidden-xs" data-slide="next">
+              <i class="fa fa-angle-right"></i>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section><!--/slider-->
+  <div class="container">
+      <div class="row">
+        <div class="col-lg-2" style="background-color:green;">
+<!-- <div class="btn-group-vertical" style="background-color:green;> -->
+		<div class="col-lg-2"></div>
+		<button type="button"  class="btn btn-primary btn-block" ng-click="getDataaPos()">A Positive</button>
+		<div class="col-lg-2"></div>
+		<button type="button" class="btn btn-primary btn-block" ng-click="getDataaNeg()">A Negative</button>
+		<div class="col-lg-2"></div>
+		<button type="button" class="btn btn-primary btn-block" ng-click="getDatabPos()">B Positive</button>
+		<div class="col-lg-2"></div>
+		<button type="button" class="btn btn-primary btn-block" ng-click="getDatabNeg()">B Negative</button>
+		<div class="col-lg-2"></div>
+		<button type="button" class="btn btn-primary btn-block" ng-click="getDataabPos()">AB Positive</button>
+		<div class="col-lg-2"></div>
+<!--		</div> -->
+		</div>
+
+<div class="col-lg-10">
+  <form  method="post" action="/billing" ng-submit="store()">
+    <div class="col-sm-9 padding-right">
+      <div class="features_items"><!--features_items-->
+        <h2 class="title text-center">Features Items</h2>
+
+<div class="row">
+
+		<!--
+		<div class="col-lg-3">
+                <div ng-repeat="x in childrenCat" ng-click="getData($index)">
+                {{x.pCode}}<br>
+                </div>
+            </div>
+			-->
+
+<!-- <div class="col-lg-5"> -->
+
+<div ng-repeat="prod in prods">
+<div class="col-lg-4">
+          <div class="product-image-wrapper">
+            <div class="single-products">
+              
+			  <div class="productinfo text-center">
+                <img width="120" height="150" ng-src="images/products/{{prod.pImage}}" alt="" />
+                <h2>Rs. {{prod.pCost}}</h2>
+                <p>{{prod.pCode}}</p>
+				<p>{{prod.hosName}}</p>
+				<p>{{prod.pDisc}}</p>
+				  
+              </div>
+
+              <div class="product-overlay">
+                <div class="overlay-content">
+                  <h2>Rs. {{prod.pCost}}</h2>
+                  <p>{{prod.pCode}}</p>
+				<!--  <input type="text" [(ngModel)]="code1"  value={{prod.pCode}}> -->
+					<button type="button" ng-click="add($index)">Add to Cart</button> 
+				<!--	<button type="button" ng-click="add({pCode: 1001, pCost: 120, pName: 'Shirt' })">Add</button> -->
+				<input type="hidden"  ng-model="pCode" value={{prod.pCode}}>
+				<input type="hidden"  ng-model="pCost" value={{prod.pCost}}>
+				<input type="hidden"  ng-model="pName" value={{prod.hosName}}>
+				
+				</div>
+              </div>
+        
+			</div>
+          </div>
+</div>
+</div>
+
+<!-- </div> -->
+
+        </div>  
+      </div>
+    </div>
+
+   <div class="col-lg-3" style="background-color:green;>
+	<div class="col-lg-2">
+    <button type="submit" class="btn btn-primary btn-block">Proceed to billing</button>
+	</div>
+	<div class="col-lg-2">
+	<input type="hidden"  id="products" name="products" value="">
+	</div>
+    <div class="col-lg-2" ng-repeat="prodToAdd in prodsToAdd">{{prodToAdd.pCode}} {{prodToAdd.pCost}} {{prodToAdd.hosName}} </div>
+	<div class="col-lg-2"></div>
+	</div>
+	</form>
+</div>
+
+</main>
+</body>
+</html>
