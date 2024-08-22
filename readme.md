@@ -31,6 +31,8 @@ Ensure you have the following installed on your system:
 - Node.js (v14.x or later)
 - MongoDB (v4.x or later)
 - Angular CLI (v12.x or later)
+-  **NOTE:** MongoDB and `mongosh` are required to be installed in the system before running the app.
+
 
 ### Steps
 
@@ -39,3 +41,26 @@ Ensure you have the following installed on your system:
    ```bash
    git clone https://github.com/sumaiya-411/Export-Management.git
    cd Export-Management
+
+2. **Install dependencies:**
+
+  ```bash
+  npm install
+  ```
+
+3. **Navigate to app directory**
+
+  ```bash
+  cd app
+  ```
+
+4. **Run the Application**
+
+  ```bash
+  node nodeappmongo.js
+  ```
+
+5. **Access the application:**
+
+Open your browser and navigate to ```http://localhost:3000``` to access the Export Management System.
+
