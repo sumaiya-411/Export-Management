@@ -37,5 +37,5 @@ Ensure you have the following installed on your system:
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/yourusername/export-management-system.git
-   cd export-management-system
+   git clone https://github.com/sumaiya-411/Export-Management.git
+   cd Export-Management
